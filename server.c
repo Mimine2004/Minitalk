@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 08:20:34 by hhecquet          #+#    #+#             */
-/*   Updated: 2025/01/02 11:42:05 by hhecquet         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:37:24 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,15 @@ void signal_handler(int sig) {
 
 int main(void)
 {
+	struct sigaction sa;
+	
     printf("PID du serveur: %d\n", getpid());
-    signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	sa.sa_handler = signal_handler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR2, &sa, NULL);
     while (1)
         pause();
-    return 0;
+    return (0);
 }
