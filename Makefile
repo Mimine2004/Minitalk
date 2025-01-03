@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 08:17:15 by hhecquet          #+#    #+#              #
-#    Updated: 2025/01/02 11:33:32 by hhecquet         ###   ########.fr        #
+#    Updated: 2025/01/03 11:58:55 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 SERVER = server
 CLIENT = client
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SERVER_SRCS =	server.c
 CLIENT_SRCS =	client.c
