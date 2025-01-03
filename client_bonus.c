@@ -6,11 +6,11 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:01:36 by hhecquet          #+#    #+#             */
-/*   Updated: 2025/01/03 14:55:21 by hhecquet         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:04:40 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 volatile sig_atomic_t	g_ack = 0;
 
@@ -68,6 +68,6 @@ int	main(int argc, char **argv)
 		return (ft_printf("Wrong PID\n"), 0);
 	while (!g_ack)
 		pause();
-	ft_printf("Message received !\n");			
+	ft_printf("Message received !\n");
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:03:05 by hhecquet          #+#    #+#             */
-/*   Updated: 2025/01/03 14:56:01 by hhecquet         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:04:56 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 volatile sig_atomic_t	g_received_bit = 0;
 
@@ -43,7 +43,8 @@ void	manage_buffer(unsigned char current_char, char **message,
 	(*len)++;
 }
 
-void	print_complete_message(char **message, size_t *capacity, size_t *len, siginfo_t *info)
+void	print_complete_message(char **message, size_t *capacity, size_t *len,
+		siginfo_t *info)
 {
 	ft_printf("%s\n", *message);
 	free(*message);
