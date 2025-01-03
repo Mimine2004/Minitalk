@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:03:05 by hhecquet          #+#    #+#             */
-/*   Updated: 2025/01/03 14:47:00 by hhecquet         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:56:01 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ void	manage_buffer(unsigned char current_char, char **message,
 	(*len)++;
 }
 
-void	print_complete_message(char **message, size_t *capacity, size_t *len)
+void	print_complete_message(char **message, size_t *capacity, size_t *len, siginfo_t *info)
 {
 	ft_printf("%s\n", *message);
 	free(*message);
 	*message = NULL;
 	*capacity = 0;
 	*len = 0;
+	usleep(10);
+	if (info && info->si_pid)
+		kill(info->si_pid, SIGUSR1);
 }
 
 void	signal_handler(int sig, siginfo_t *info, void *context)
@@ -71,7 +74,7 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 	{
 		manage_buffer(current_char, &message, &capacity, &len);
 		if (current_char == '\0')
-			print_complete_message(&message, &capacity, &len);
+			print_complete_message(&message, &capacity, &len, info);
 		bits_received = 0;
 		current_char = 0;
 	}

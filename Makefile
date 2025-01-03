@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 08:17:15 by hhecquet          #+#    #+#              #
-#    Updated: 2025/01/03 14:14:22 by hhecquet         ###   ########.fr        #
+#    Updated: 2025/01/03 14:58:06 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ CC = cc
 SERVER = server
 CLIENT = client
 
+SERVER_BONUS = server_bonus
+CLIENT_BONUS = client_bonus
+
 CFLAGS = -Wall -Wextra -Werror -g
 
 SERVER_SRCS =	server.c	\
@@ -26,8 +29,13 @@ CLIENT_SRCS =	client.c	\
 				libft/*c	\
 				libft/ft_printf/*.c	
 
-SERVER_BONUS =	server_bonus.c
-CLIENT_BONUS =	client_bonus.c
+SERVER_BONUS_SRCS =	server_bonus.c	\
+					libft/*c		\
+					libft/ft_printf/*.c
+CLIENT_BONUS_SRCS =	client_bonus.c	\
+					libft/*c		\
+					libft/ft_printf/*.c
+				
 
 all: $(SERVER) $(CLIENT)
 
@@ -47,9 +55,9 @@ $(CLIENT): $(CLIENT_SRCS) minitalk.h
 	@$(CC) $(CFLAGS) $(CLIENT_SRCS) -o $(CLIENT)
 	@echo "$(CLIENT) has been compiled successfully ! ⭐"
 
-bonus: $(SERVER_BONUS) $(CLIENT_BONUS)
-	@$(CC) $(CFLAGS) $(SERVER_BONUS) -o $(SERVER)
-	@$(CC) $(CFLAGS) $(CLIENT_BONUS) -o $(CLIENT)
+bonus: $(SERVER_BONUS_SRCS) $(CLIENT_BONUS_SRCS) minitalk_bonus.h
+	@$(CC) $(CFLAGS) $(SERVER_BONUS_SRCS) -o $(SERVER_BONUS)
+	@$(CC) $(CFLAGS) $(CLIENT_BONUS_SRCS) -o $(CLIENT_BONUS)
 	@echo "bonus have been compiled successfully ! 🌟"
 
 clean:
