@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 08:17:15 by hhecquet          #+#    #+#              #
-#    Updated: 2025/01/03 14:58:06 by hhecquet         ###   ########.fr        #
+#    Updated: 2025/01/03 15:17:32 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ fclean:
 	@cd libft && make -s fclean
 	@cd ..
 	@make -s clean
-	@rm -f $(SERVER) $(CLIENT)
+	@rm -f $(SERVER) $(CLIENT) $(SERVER_BONUS) $(CLIENT_BONUS)
 	@echo "client and server themself have been deleted ! 💥"
 
 re: fclean all
