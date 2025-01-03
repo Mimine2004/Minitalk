@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:01:36 by hhecquet          #+#    #+#             */
-/*   Updated: 2025/01/03 14:16:38 by hhecquet         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:36:34 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int	main(int argc, char **argv)
 	pid_t				server_pid;
 	struct sigaction	sa;
 
-	server_pid = ft_atoi(argv[1]);
+	server_pid = 0;
 	if (argc != 3)
 	{
 		ft_printf("Usage: %s <server PID> <message>\n", argv[0]);
 		return (1);
 	}
+	server_pid = ft_atoi(argv[1]);
 	sa.sa_handler = ack_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = 0;
